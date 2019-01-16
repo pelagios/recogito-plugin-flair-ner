@@ -4,6 +4,7 @@ import java.io.{File, PrintWriter}
 import java.util.UUID
 import org.pelagios.recogito.sdk.ner._
 import scala.collection.JavaConverters._
+import scala.language.postfixOps
 import sys.process._
 
 class FlairWrapperPlugin extends NERPlugin {
@@ -29,10 +30,11 @@ class FlairWrapperPlugin extends NERPlugin {
 
     val result = s"python parse.py $filename" !
 
+    tmp.delete()
+
     println(result)
 
     Seq.empty[Entity].asJava
   }
-
 
 }
