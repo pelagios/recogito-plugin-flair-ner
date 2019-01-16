@@ -26,9 +26,7 @@ sbt test
 
 ## Compile and Deploy
 
-I still need to set up a proper installation process for this. For the time being:
-
 - build the plugin using `sbt package`. This will create the .jar file `target\recogito-plugin-ner-flair-0.1.jar`. Copy 
-  this file into the Recogito plugins folder
-- make sure flair is available on the Recogito server `pip install flair`
-- TODO where to put the Pyhton script?
+  this file into a subfolder __inside__ the Recogito plugins folder
+- make sure Flair is available on the Recogito server (`pip install flair`)
+- copy the Python script to the same subfolder
