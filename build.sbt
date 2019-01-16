@@ -14,6 +14,7 @@ crossPaths := false
 /** Runtime dependencies **/
 libraryDependencies ++= Seq(
   "org.pelagios" % "recogito-plugin-sdk" % "0.3" from "https://github.com/pelagios/recogito2-plugin-sdk/releases/download/v0.3/recogito-plugin-sdk-0.3.jar",
+  "com.typesafe.play" %% "play-json" % "2.6.10"
 )
 
 /** Test dependencies **/
