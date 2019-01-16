@@ -22,16 +22,13 @@ class FlairWrapperPlugin extends NERPlugin {
 
   override def parse(text: String) = {
     // Write the text to a temporary file we can hand to Flair
-    val filename = s"${UUID.randomUUID}.txt"
-
-    // TODO make this a real tempfile!
-    val tmp = new File(filename)
+    val tmp = File.createTempFile("flair_", ".txt")
     val writer = new PrintWriter(tmp)
     writer.write(text)
     writer.close
 
     // Call out via commandline and collect the results
-    val result = s"python parse.py $filename" !!
+    val result = s"python parse.py ${tmp.getAbsolutePath}" !!
 
     // Delete the temp file
     tmp.delete()
