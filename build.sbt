@@ -6,6 +6,8 @@ version := "0.1"
 
 scalaVersion := "2.11.11"
 
+scalaVersion in ThisBuild := "2.11.11"
+
 scalacOptions += "-feature"
 
 // Do not append Scala versions to the generated artifacts

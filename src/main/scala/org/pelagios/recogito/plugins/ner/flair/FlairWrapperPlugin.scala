@@ -27,8 +27,10 @@ class FlairWrapperPlugin extends NERPlugin {
     writer.write(text)
     writer.close
 
+    val script = FlairWrapperPlugin.findPath("parse.py").get
+
     // Call out via commandline and collect the results
-    val result = s"python parse.py ${tmp.getAbsolutePath}" !!
+    val result = s"python ${script} ${tmp.getAbsolutePath}" !!
 
     // Delete the temp file
     tmp.delete()
@@ -50,6 +52,25 @@ class FlairWrapperPlugin extends NERPlugin {
 
       typ.map(t => new Entity(text, t, start))
     }.asJava
+  }
+
+}
+
+object FlairWrapperPlugin {
+
+  private def findInFolder(filename: String, folder: File): Option[File] = {
+    folder.listFiles.toSeq.filter(_.getName == filename).headOption match {
+      case Some(file) => Some(file)
+
+      case None => 
+        val folders = folder.listFiles.filter(_.isDirectory)
+        folders.flatMap(f => findInFolder(filename, f)).headOption
+    }
+  }
+
+  // TODO move this into the SDK as a utility function
+  def findPath(filename: String, rootPath: String = "plugins"): Option[String] = {
+    findInFolder(filename, new File(rootPath)).map(_.getAbsolutePath)
   }
 
 }
