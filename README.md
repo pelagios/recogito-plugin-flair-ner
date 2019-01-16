@@ -1,6 +1,6 @@
 # Recogito Flair NER Plugin (Experimental)
 
-An experimental Recogito NER plugin using [Flair](https://github.com/zalandoresearch/flair) by Zalando Research. 
+An experimental Named Entity Recognition plugin to the [Recogito](http://github.com/pelagios/recogito2) annotation platform that uses [Flair](https://github.com/zalandoresearch/flair) by Zalando Research. 
 
 ![Screenshot](screenshot.png)
 
