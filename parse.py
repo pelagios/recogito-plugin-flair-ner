@@ -1,8 +1,10 @@
+import sys
 from flair.data import Sentence
 from flair.models import SequenceTagger
 
-# TODO pick filename from CLI arg
-with open('input.txt', 'r') as f:
+filename = sys.argv[1]
+
+with open(filename, 'r') as f:
   sentence = Sentence(f.read())
   tagger = SequenceTagger.load('ner')
   tagger.predict(sentence)
