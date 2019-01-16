@@ -27,6 +27,7 @@ class FlairWrapperPlugin extends NERPlugin {
     writer.write(text)
     writer.close
 
+    // Locate the script somewhere within the /plugins folder
     val script = FlairWrapperPlugin.findPath("parse.py").get
 
     // Call out via commandline and collect the results
@@ -35,7 +36,7 @@ class FlairWrapperPlugin extends NERPlugin {
     // Delete the temp file
     tmp.delete()
 
-    // Flair returns JSON - parse the result...
+    // The script returns JSON - parse the result...
     val json = Json.parse(result)
 
     // ...and convert entities to Recogito API classes
@@ -56,6 +57,7 @@ class FlairWrapperPlugin extends NERPlugin {
 
 }
 
+// TODO move this into the SDK as a utility function
 object FlairWrapperPlugin {
 
   private def findInFolder(filename: String, folder: File): Option[File] = {
@@ -68,7 +70,6 @@ object FlairWrapperPlugin {
     }
   }
 
-  // TODO move this into the SDK as a utility function
   def findPath(filename: String, rootPath: String = "plugins"): Option[String] = {
     findInFolder(filename, new File(rootPath)).map(_.getAbsolutePath)
   }
