@@ -4,14 +4,14 @@ An (experimental) plugin to the [Recogito annotation platform](http://github.com
 that adds [Flair](https://github.com/zalandoresearch/flair) by 
 [Zalando Research](https://research.zalando.com/) as a Named Entity Recognition Engine. 
 
-![Screenshot](screenshot.png)
-
 The plugin consists of two parts:
 
 1. a minimal Python script that takes a filename as input, runs 
    NER with Flair, and writes JSON results to STDOUT
 2. a Scala wrapper that implements the Recogito plugin interface, 
    and calls out to the Python script via the command line
+
+![Screenshot](screenshot.png)
 
 ## Pre-Requisites
 
