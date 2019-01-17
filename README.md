@@ -1,16 +1,21 @@
 # Recogito Flair Plugin
 
-An experimental Named Entity Recognition plugin to the [Recogito](http://github.com/pelagios/recogito2) 
-annotation platform that uses [Flair](https://github.com/zalandoresearch/flair) by Zalando Research. 
+An (experimental) plugin to the [Recogito](http://github.com/pelagios/recogito2) 
+annotation platform that adds [Flair](https://github.com/zalandoresearch/flair) by 
+[Zalando Research](https://research.zalando.com/) as a Named Entity Recognition Engine. 
 
 ![Screenshot](screenshot.png)
 
-The plugin consists of two components:
+The plugin consists of two parts:
 
-1. A Python script that takes a filename as input, runs 
-   Flair, and writes JSON results to STDOUT
-2. A Scala wrapper which implements the Recogito NER API, 
-  and calls out to the script through the command line
+1. a minimal Python script that takes a filename as input, runs 
+   NER with Flair, and writes JSON results to STDOUT
+2. a Scala wrapper that implements the Recogito plugin interface, 
+   and calls out to the Python script via the command line
+
+## Pre-Requisites
+
+Make sure Flair is installed on your system: `pip install flair`
 
 ## Testing
 
@@ -30,8 +35,7 @@ sbt test
 
 - build the plugin using `sbt package`. This will create the 
   .jar file `target\recogito-plugin-ner-flair-0.1.jar`. 
-- Copy this file into a subfolder __inside__ the Recogito 
-  plugins folder
-- make sure Flair is available on the Recogito server 
-  (`pip install flair`)
+- copy the .jar into a subfolder __inside__ the Recogito 
+  `/plugins` folder
 - copy the Python script to the same subfolder
+- make sure Flair is installed on the Recogito server 
