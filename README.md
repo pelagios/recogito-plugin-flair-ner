@@ -1,7 +1,7 @@
-# Recogito Flair Plugin
+# Recogito Flair NER Plugin
 
-An (experimental) plugin to the [Recogito](http://github.com/pelagios/recogito2) 
-annotation platform that adds [Flair](https://github.com/zalandoresearch/flair) by 
+An (experimental) plugin to the [Recogito annotation platform](http://github.com/pelagios/recogito2) 
+that adds [Flair](https://github.com/zalandoresearch/flair) by 
 [Zalando Research](https://research.zalando.com/) as a Named Entity Recognition Engine. 
 
 ![Screenshot](screenshot.png)
